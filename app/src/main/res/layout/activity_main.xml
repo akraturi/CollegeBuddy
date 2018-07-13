@@ -8,6 +8,17 @@
     tools:context=".MainActivity"
     android:background="@color/md_grey_200">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -34,5 +45,6 @@
         app:srcCompat="@drawable/ic_add_black_24dp"
         app:fabSize="normal"
         android:scaleType="center"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
