@@ -86,6 +86,7 @@
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:id="@+id/card_detail1"
                 />
 
         </LinearLayout>
@@ -151,6 +152,7 @@
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:id="@+id/card_detail2"
                 />
 
         </LinearLayout>
@@ -215,6 +217,7 @@
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:id="@+id/card_detail3"
                 />
 
         </LinearLayout>
@@ -280,6 +283,7 @@
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:id="@+id/card_detail4"
                 />
 
         </LinearLayout>
