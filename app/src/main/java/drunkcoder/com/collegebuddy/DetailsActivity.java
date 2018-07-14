@@ -81,9 +81,9 @@ public class DetailsActivity extends AppCompatActivity {
         switch (category)
         {
             case 0:
-                return OverviewFragment.newInstance();
+                return SheduleTodayFragment.newInstance();
             case 1:
-                return OverviewFragment.newInstance();
+                return AttendanceFragment.newInstance();
             case 2:
                 return OverviewFragment.newInstance();
             case 3:

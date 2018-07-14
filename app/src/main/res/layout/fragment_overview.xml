@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Some text"
+                android:text="@string/upcoming_classes"
                 android:drawableStart="@drawable/ic_timetable_black_24dp"
                 android:drawablePadding="8dp"
                 android:textSize="@dimen/material_text_title"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There are no events"
+                android:text="@string/no_classes_head"
                 android:textSize="@dimen/material_text_title"
                 android:textStyle="bold"
                 android:layout_marginLeft="12dp"
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No events are schedualed as of now you can add them using the + button in bottom right corner "
+                android:text="@string/noclasses_text"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"
                 />
@@ -114,8 +114,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Some text"
-                android:drawableStart="@drawable/ic_timetable_black_24dp"
+                android:text="@string/attendence_summery"
+                android:drawableStart="@drawable/ic_attendence_black_24dp"
                 android:drawablePadding="8dp"
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
@@ -129,7 +129,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There are no events"
+                android:text="@string/no_subject_head"
                 android:textSize="@dimen/material_text_title"
                 android:textStyle="bold"
                 android:layout_marginLeft="12dp"
@@ -137,7 +137,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No events are schedualed as of now you can add them using the + button in bottom right corner "
+                android:text="@string/noclasses_text"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -179,8 +179,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Some text"
-                android:drawableStart="@drawable/ic_timetable_black_24dp"
+                android:text="@string/performance_summery"
+                android:drawableStart="@drawable/ic_marks_black_24dp"
                 android:drawablePadding="8dp"
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
@@ -194,7 +194,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There are no events"
+                android:text="@string/no_records_head"
                 android:textSize="@dimen/material_text_title"
                 android:textStyle="bold"
                 android:layout_marginLeft="12dp"
@@ -202,7 +202,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No events are schedualed as of now you can add them using the + button in bottom right corner "
+                android:text="@string/noclasses_text"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -245,8 +245,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Some text"
-                android:drawableStart="@drawable/ic_timetable_black_24dp"
+                android:text="@string/upcoming_events"
+                android:drawableStart="@drawable/ic_notifications_black_24dp"
                 android:drawablePadding="8dp"
                 android:textSize="@dimen/material_text_title"
                 android:paddingTop="8dp"
@@ -260,7 +260,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There are no events"
+                android:text="@string/no_events_head"
                 android:textSize="@dimen/material_text_title"
                 android:textStyle="bold"
                 android:layout_marginLeft="12dp"
@@ -268,7 +268,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No events are schedualed as of now you can add them using the + button in bottom right corner "
+                android:text="@string/noclasses_text"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"/>
             <TextView

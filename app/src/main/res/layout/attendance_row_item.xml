@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Computer Networks"
+                android:textSize="@dimen/material_text_headline"
+                android:textStyle="bold"
+                android:layout_margin="8dp"/>
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="8dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Attended:16"
+                   android:layout_marginLeft="8dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Total:24"
+                   android:layout_alignParentRight="true"
+                   android:layout_marginRight="8dp"/>
+           </RelativeLayout>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/attendance_per_textview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circle"
+            android:text="80.3"
+            android:textSize="@dimen/material_text_headline"
+            android:textStyle="bold"
+            android:textColor="@color/md_white_1000"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/darker_gray" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are on the track!"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:textSize="@dimen/material_text_subhead"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/attendance_check"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/correct"
+                app:civ_border_color="@color/md_white_1000"
+                app:civ_border_width="3dp"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
