@@ -5,4 +5,17 @@
     <string name="title_marks">Marks</string>
     <string name="title_reminder">Reminder</string>
     <string name="title_attendance">Attendance</string>
+    <string name="title_schedule">Schedule Today</string>
+    <string name="title_activity_details">DetailsActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="upcoming_classes">Upcoming Classes</string>
+    <string name="noclasses_text">Add them using the button in bottom right corner</string>
+    <string name="no_classes_head">There are no classes</string>
+    <string name="attendence_summery">Summery</string>
+    <string name="no_subject_head">There are no subjects</string>
+    <string name="no_records_head">There are no records</string>
+    <string name="no_events_head">There are no events</string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="performance_summery">Performance Summery</string>
 </resources>
