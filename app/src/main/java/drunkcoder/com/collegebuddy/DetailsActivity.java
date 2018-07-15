@@ -1,5 +1,6 @@
 package drunkcoder.com.collegebuddy;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+              startActivity(new Intent(DetailsActivity.this,TimetableActivity.class));
             }
         });
 
