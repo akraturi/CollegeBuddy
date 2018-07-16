@@ -31,20 +31,64 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+    <com.github.clans.fab.FloatingActionMenu
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/floatingActionButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:focusable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add_black_24dp"
         app:fabSize="normal"
-        android:scaleType="center"/>
+        android:scaleType="center"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true"
+        fab:menu_fab_label="Cancel"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="@color/colorAccent"
+        fab:menu_colorPressed="@color/colorAccent"
+        fab:menu_colorRipple="@color/colorAccent"
+        android:padding="8dp">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_notifications_smallwhite_24dp"
+            fab:fab_size="mini"
+            fab:fab_label="Add Reminder"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_assignment_ind_black_24dp"
+            fab:fab_size="mini"
+            fab:fab_label="Mark attendance"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabAddSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_border_color_white_24dp"
+            fab:fab_size="mini"
+            fab:fab_label="Add subject"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorAccent" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

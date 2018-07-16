@@ -118,7 +118,7 @@ public class RecyclerViewHelper {
         @Override
         public void onBindViewHolder(@NonNull DataHolder holder, int position) {
 
-        holder.bind();
+            holder.bind();
         }
 
         @Override
