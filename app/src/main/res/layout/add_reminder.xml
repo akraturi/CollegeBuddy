@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="@dimen/material_text_title"-->
+        <!--android:text="Title"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_margin="4dp"/>-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add description here"
+        android:layout_margin="4dp"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Date"
+            android:layout_margin="4dp"
+            android:id="@+id/date_edit_text"
+            android:layout_weight="1"
+            android:inputType="date"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Time"
+            android:layout_margin="4dp"
+            android:id="@+id/time_date_text"
+            android:layout_weight="1"
+            android:inputType="time"/>
+    </LinearLayout>
+
+</LinearLayout>

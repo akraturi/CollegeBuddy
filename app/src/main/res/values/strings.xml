@@ -18,4 +18,8 @@
     <string name="no_events_head">There are no events</string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="performance_summery">Performance Summery</string>
+
+    <string name="title_subject">Subject</string>
+    <string name="title_faculty">Faculty</string>
 </resources>
+

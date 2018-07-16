@@ -15,17 +15,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AttendanceFragment extends Fragment {
+public class MarksFragment extends Fragment {
 
-    private RecyclerViewHelper mRecyclerViewHelper;
+    private RecyclerViewHelper mVerticalRecyclerViewHelper;
+    private RecyclerViewHelper mHorizontalRecyclerViewHelper;
     private Activity mHostingActivity;
     private List<String> subjects;
 
-    public static AttendanceFragment newInstance() {
+    public static MarksFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        AttendanceFragment fragment = new AttendanceFragment();
+        MarksFragment fragment = new MarksFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,12 +43,17 @@ public class AttendanceFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_attendance,container,false);
+        View view = inflater.inflate(R.layout.fragment_marks,container,false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.attendance_fragment_recyclerview);
-        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.attendance_row_item,new LinearLayoutManager(mHostingActivity),false);
-        mRecyclerViewHelper.setUpAdapter(recyclerView);
+        RecyclerView recyclerView =view.findViewById(R.id.marks_fragment_recyclerview);
+        mVerticalRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,
+                recyclerView,
+                subjects,R.layout.marks_row_item,new LinearLayoutManager(mHostingActivity),true,
+                R.id.horizontal_marks_recyclerview,R.layout.marks_row_item_child);
+        mVerticalRecyclerViewHelper.setUpAdapter(recyclerView);
         return view;
     }
+
+
 
 }

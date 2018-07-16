@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:id="@+id/marks_row_card"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Network Security"
+            android:drawableStart="@drawable/ic_timetable_black_24dp"
+            android:drawablePadding="8dp"
+            android:textSize="@dimen/material_text_title"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="12dp"
+            android:background="@color/md_blue_600"
+            android:textColor="@color/md_white_1000"
+            android:textStyle="bold"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontal_marks_recyclerview">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total marks"
+            android:drawableLeft="@drawable/ic_arrow_forward_black_24dp"
+            android:drawablePadding="16dp"
+            android:background="@color/md_blue_600"
+            android:paddingLeft="12dp"
+            android:textSize="@dimen/material_text_title"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/card_detail1"
+            android:textStyle="bold"
+            android:textColor="@color/md_white_1000"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -15,17 +15,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AttendanceFragment extends Fragment {
+public class ReminderFragment extends Fragment {
 
     private RecyclerViewHelper mRecyclerViewHelper;
     private Activity mHostingActivity;
     private List<String> subjects;
 
-    public static AttendanceFragment newInstance() {
+    public static ReminderFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        AttendanceFragment fragment = new AttendanceFragment();
+        ReminderFragment fragment = new ReminderFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,10 +42,10 @@ public class AttendanceFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_attendance,container,false);
+        View view = inflater.inflate(R.layout.fragment_reminder,container,false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.attendance_fragment_recyclerview);
-        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.attendance_row_item,new LinearLayoutManager(mHostingActivity),false);
+        RecyclerView recyclerView=view.findViewById(R.id.reminder_fragment_recyclerview);
+        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.reminder_row_item,new LinearLayoutManager(mHostingActivity),false);
         mRecyclerViewHelper.setUpAdapter(recyclerView);
         return view;
     }
