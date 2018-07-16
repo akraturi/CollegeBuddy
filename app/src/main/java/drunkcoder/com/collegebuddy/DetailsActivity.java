@@ -88,7 +88,7 @@ public class DetailsActivity extends AppCompatActivity {
             case 2:
                 return MarksFragment.newInstance();
             case 3:
-                return OverviewFragment.newInstance();
+                return ReminderFragment.newInstance();
         }
         return null;
     }

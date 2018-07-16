@@ -23,5 +23,6 @@ public class TimetableActivity extends AppCompatActivity {
                 new ArrayList<String>(),R.layout.timetable_row_item,new LinearLayoutManager(this),true,
                 R.id.horizontal_timetable_recyclerview,R.layout.timetable_row_item_child);
         mVerticalRecyclerViewHelper.setUpAdapter(recyclerView);
+        
     }
 }
