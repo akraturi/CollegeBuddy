@@ -20,6 +20,7 @@
             android:layout_weight="1"
             android:gravity="center">
             <TextView
+                android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -30,6 +31,7 @@
                 android:paddingStart="12dp"
                 android:layout_margin="4dp"/>
             <TextView
+                android:id="@+id/subjectTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Database Management System"
@@ -38,6 +40,7 @@
                 android:textStyle="bold"
                 android:background="@color/md_grey_100"/>
             <TextView
+                android:id="@+id/venueTextview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="(LH-10)"

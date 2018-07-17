@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class MarksFragment extends Fragment {
     private RecyclerViewHelper mVerticalRecyclerViewHelper;
     private RecyclerViewHelper mHorizontalRecyclerViewHelper;
     private Activity mHostingActivity;
-    private List<String> subjects;
+
 
     public static MarksFragment newInstance() {
 
@@ -35,9 +36,7 @@ public class MarksFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHostingActivity=getActivity();
-        subjects = new ArrayList<>();
-        subjects.add("Real Time System");
-        subjects.add("Computer Networks");
+
     }
 
     @Nullable
@@ -45,14 +44,13 @@ public class MarksFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_marks,container,false);
 
-        RecyclerView recyclerView =view.findViewById(R.id.marks_fragment_recyclerview);
-        mVerticalRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,
-                recyclerView,
-                subjects,R.layout.marks_row_item,new LinearLayoutManager(mHostingActivity),true,
-                R.id.horizontal_marks_recyclerview,R.layout.marks_row_item_child);
-        mVerticalRecyclerViewHelper.setUpAdapter(recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.marks_fragment_recyclerview);
+
+
         return view;
     }
+
+
 
 
 

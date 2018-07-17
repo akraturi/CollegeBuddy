@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class AttendanceFragment extends Fragment {
 
     private RecyclerViewHelper mRecyclerViewHelper;
     private Activity mHostingActivity;
-    private List<String> subjects;
+    private List<?> attendanceList;
 
     public static AttendanceFragment newInstance() {
 
@@ -34,9 +35,7 @@ public class AttendanceFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHostingActivity=getActivity();
-        subjects = new ArrayList<>();
-        subjects.add("Real Time System");
-        subjects.add("Computer Networks");
+
     }
 
     @Nullable
@@ -44,10 +43,11 @@ public class AttendanceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_attendance,container,false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.attendance_fragment_recyclerview);
-        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.attendance_row_item,new LinearLayoutManager(mHostingActivity),false);
-        mRecyclerViewHelper.setUpAdapter(recyclerView);
+        RecyclerView recyclerView= view.findViewById(R.id.marks_fragment_recyclerview);
+
+
         return view;
     }
+
 
 }

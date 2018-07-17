@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/dayTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Monday"
@@ -42,7 +43,7 @@
             android:textSize="@dimen/material_text_title"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:id="@+id/card_detail1"
+            android:id="@+id/totalclassTextview"
             android:textStyle="bold"
             android:textColor="@color/md_white_1000"
             />

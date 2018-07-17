@@ -44,9 +44,9 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reminder,container,false);
 
-        RecyclerView recyclerView=view.findViewById(R.id.reminder_fragment_recyclerview);
-        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.reminder_row_item,new LinearLayoutManager(mHostingActivity),false);
-        mRecyclerViewHelper.setUpAdapter(recyclerView);
+//        RecyclerView recyclerView=view.findViewById(R.id.reminder_fragment_recyclerview);
+//        mRecyclerViewHelper=new RecyclerViewHelper(mHostingActivity,recyclerView,subjects,R.layout.reminder_row_item,new LinearLayoutManager(mHostingActivity),false);
+//        mRecyclerViewHelper.setUpAdapter(recyclerView);
         return view;
     }
 

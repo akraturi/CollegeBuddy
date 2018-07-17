@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="08:AM-09:00AM"
@@ -28,6 +29,7 @@
                 android:gravity="center"
                 android:drawableLeft="@drawable/ic_access_time_white_24dp" />
             <ImageView
+                android:id="@+id/overflowImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_action_more_vert"
@@ -45,7 +47,7 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
-                android:id="@+id/attendance_per_textview"
+                android:id="@+id/subjectTextView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/circle"
@@ -63,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/md_white_1000" />
             <TextView
-                android:id="@+id/attendance_per_textview1"
+                android:id="@+id/venueTextview"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/circle"

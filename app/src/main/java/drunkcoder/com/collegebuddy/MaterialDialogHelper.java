@@ -1,9 +1,11 @@
 package drunkcoder.com.collegebuddy;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.activeandroid.query.Select;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 public class MaterialDialogHelper {
 
     private Context context;
+    List<CharSequence> list;
 
     public MaterialDialogHelper(Context context)
     {
@@ -56,13 +59,19 @@ public class MaterialDialogHelper {
 
     public void createInputDialog()
     {
+
+        final String subName;
+        final String facultyName;
+
+
         new MultiInputMaterialDialogBuilder(context)
                 .addInput(0,R.string.title_subject)
                 .addInput(0,R.string.title_faculty)
                 .inputs(new MultiInputMaterialDialogBuilder.InputsCallback() {
                     @Override
                     public void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated) {
-                        Toast.makeText(context, "Input 1:"+inputs.get(0)+" input2:"+inputs.get(1), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Input 1:"+inputs.get(0)+" input2:"+inputs.get(1), Toast.LENGTH_SHORT).show();
+                        list=inputs;
                     }
                 })
                 .title("Add subject")
@@ -71,7 +80,12 @@ public class MaterialDialogHelper {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
+//                        Subject subject=new Subject(list.get(0).toString(),list.get(1).toString());
+//                        DBhelper.save(subject);
+//                        List<Subject> obj = new Select().from(Subject.class).execute();
+//                        String names= obj.toString();
+//                        Toast.makeText(context, "Saved to db!:"+names, Toast.LENGTH_SHORT).show();
+//                        Log.i("here:",names);
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback() {
