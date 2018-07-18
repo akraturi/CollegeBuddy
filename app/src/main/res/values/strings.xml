@@ -21,6 +21,9 @@
 
     <string name="title_subject">Subject</string>
     <string name="title_faculty">Faculty</string>
+    <string name="edit_subjects">Edit Subjects</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
 
     <string-array name="week_days">
         <item>Monday</item>

@@ -12,90 +12,141 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class MaterialDialogHelper {
 
-    private Context context;
-    List<CharSequence> list;
+    private Context mContext;
+    private OnListItemClickListener mListItemClickListener;
+    private OnInputListener mInputListener;
+    private OnResponseListener mOnResponseListener;
+
 
     public MaterialDialogHelper(Context context)
     {
-        this.context=context;
+        mContext=context;
     }
 
-   public  void createListDialog( String[] data) {
-        new MaterialDialog.Builder(context)
-                .title("Category")
+    // Creating a list dialog
+
+    public MaterialDialogHelper createListDialog(String[] data, @Nullable String title) {
+                 new MaterialDialog.Builder(mContext)
+                .title(title)
                 .items(data)
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        if(mListItemClickListener!=null)
+                        mListItemClickListener.onClick(dialog,view,which,text);
 
-                        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-                        //  createDialogWithCustomView(R.layout.add_reminder);
-                        switch (which) {
-                            case 0:
-                                break;
-                            case 1:
-                                break;
-                            case 2:
-                                break;
                         }
-                    }
-                })
-                .show();
+                    }).itemsLongCallback(new MaterialDialog.ListLongCallback() {
+                     @Override
+                     public boolean onLongSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                      if(mListItemClickListener!=null)
+                      return  mListItemClickListener.onLongClick(dialog,itemView,position,text);
+
+                      return true;
+                     }
+                 }).show();
+                return this;
     }
 
-    public void createDialogWithCustomView(int layoutId)
+
+    public MaterialDialogHelper createInputDialog(List<CharSequence> prefills, List<CharSequence> hints, String title)
     {
-        boolean wrapInScrollView = true;
-        new MaterialDialog.Builder(context)
-                .title("Add Reminder")
-                .customView(layoutId, wrapInScrollView)
-                .positiveText("Add")
-                .negativeText("Cancel")
-                .show();
-    }
+        int count=0;
 
-    public void createInputDialog()
-    {
+        MultiInputMaterialDialogBuilder mInputBuilder=new MultiInputMaterialDialogBuilder(mContext);
 
-        final String subName;
-        final String facultyName;
+        if(prefills!=null)
+        {
+            count = prefills.size();
+        }
+        else if(hints!=null)
+        {
+            count = hints.size();
+        }
 
 
-        new MultiInputMaterialDialogBuilder(context)
-                .addInput(0,R.string.title_subject)
-                .addInput(0,R.string.title_faculty)
-                .inputs(new MultiInputMaterialDialogBuilder.InputsCallback() {
+        for(int i=0;i<count;i++)
+        {
+
+            if(prefills!=null)
+            {
+                mInputBuilder.addInput(prefills.get(i),"");
+            }
+            else
+            {
+                mInputBuilder.addInput("",hints.get(i));
+            }
+
+        }
+
+
+                mInputBuilder.inputs(new MultiInputMaterialDialogBuilder.InputsCallback() {
                     @Override
                     public void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated) {
-                        //Toast.makeText(context, "Input 1:"+inputs.get(0)+" input2:"+inputs.get(1), Toast.LENGTH_SHORT).show();
-                        list=inputs;
+                       if(mInputListener!=null)
+                        mInputListener.onInputs(dialog,inputs,allInputsValidated);
                     }
                 })
-                .title("Add subject")
+                .title(title)
                 .positiveText("Save")
                 .negativeText("Cancel")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                        Subject subject=new Subject(list.get(0).toString(),list.get(1).toString());
-//                        DBhelper.save(subject);
-//                        List<Subject> obj = new Select().from(Subject.class).execute();
-//                        String names= obj.toString();
-//                        Toast.makeText(context, "Saved to db!:"+names, Toast.LENGTH_SHORT).show();
-//                        Log.i("here:",names);
+                        if(mOnResponseListener!=null)
+                        mOnResponseListener.onPostiveResponse(dialog,which);
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        if(mOnResponseListener!=null)
+                        mOnResponseListener.onNegativeResponse(dialog,which);
                     }
                 })
                 .build().show();
+              return this;
         }
 
+        public interface OnListItemClickListener
+        {
+            void onClick(MaterialDialog dialog, View view, int which, CharSequence text);
+            boolean onLongClick(MaterialDialog dialog, View itemView, int position, CharSequence text);
+        }
 
+        public MaterialDialogHelper setOnListItemClickListener(OnListItemClickListener listener)
+        {
+            mListItemClickListener=listener;
+            return this;
+        }
+
+        public interface OnInputListener
+        {
+            void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated);
+
+        }
+
+        public MaterialDialogHelper setOnInputListener(OnInputListener listener)
+        {
+            mInputListener=listener;
+
+            return this;
+        }
+
+        public interface OnResponseListener
+        {
+            void onPostiveResponse(@NonNull MaterialDialog dialog, @NonNull DialogAction which);
+            void onNegativeResponse(@NonNull MaterialDialog dialog, @NonNull DialogAction which);
+        }
+
+        public MaterialDialogHelper setmOnResponseListener(OnResponseListener listener)
+        {
+            mOnResponseListener = listener;
+            return this;
+        }
 
 }
