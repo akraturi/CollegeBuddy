@@ -64,40 +64,48 @@ public class SheduleTodayFragment extends Fragment {
         return view;
     }
 
-    public void setupRecyclerView(RecyclerView recyclerView)
-    {
-        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(mHostingActivity,recyclerView,false,new LinearLayoutManager(mHostingActivity));
+    public void setupRecyclerView(RecyclerView recyclerView) {
+        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(mHostingActivity, recyclerView, false, new LinearLayoutManager(mHostingActivity));
 
 
         recyclerViewHelper
                 .configAdapter(new RecyclerViewHelper.AdapterActivityListener() {
-                    TextView timeTextview;
-                    TextView subjectTextView;
-                    TextView venueTextView;
+
                     @Override
-                    public DataHolder onDataHolderCreated(LayoutInflater inflater,ViewGroup parent) {
-                        View rowView = inflater.inflate(R.layout.shedule_row_item,parent,false);
+                    public DataHolder onDataHolderCreated(LayoutInflater inflater, ViewGroup parent) {
+                        View rowView = inflater.inflate(R.layout.shedule_row_item, parent, false);
                         return new DataHolder(rowView) {
+
+                            TextView timeTextview;
+                            TextView subjectTextView;
+                            TextView venueTextView;
 
                             @Override
                             public void onInit(View view) {
                                 // initialise your views here
-                                timeTextview=view.findViewById(R.id.timeTextView);
-                                subjectTextView=view.findViewById(R.id.subjectTextView);
-                                venueTextView=view.findViewById(R.id.venueTextview);
+                                timeTextview = view.findViewById(R.id.timeTextView);
+                                subjectTextView = view.findViewById(R.id.subjectTextView);
+                                venueTextView = view.findViewById(R.id.venueTextview);
+                            }
+
+                            @Override
+                            public void bind(int position) {
+
+
+                                timeTextview.setText(todaysSchedule.get(position).getStartTime() + "-" + todaysSchedule.get(position).getEndTime());
+                                subjectTextView.setText(todaysSchedule.get(position).getSubject().getName());
+                                venueTextView.setText("(" + todaysSchedule.get(position).getVenue() + ")");
                             }
                         };
                     }
 
                     @Override
-                    public void onBindDataHolder(int position) {
+                    public RecyclerViewHelper.NestedRecyclerViewHandler onBindDataHolder(int position) {
 
-                        timeTextview.setText(todaysSchedule.get(position).getStartTime()+"-"+todaysSchedule.get(position).getEndTime());
-                        subjectTextView.setText(todaysSchedule.get(position).getSubject().getName());
-                        venueTextView.setText("("+todaysSchedule.get(position).getVenue()+")");
-
+                         return null;
                     }
-                },null)
+
+                })
                 .withData(todaysSchedule)
                 .set();
     }

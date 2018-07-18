@@ -11,8 +11,10 @@ public abstract class DataHolder extends RecyclerView.ViewHolder {
     {
         super(view);
         onInit(itemView);
+
     }
 
     public abstract void onInit(View view);
+    public abstract void bind(int position);
 
 }
