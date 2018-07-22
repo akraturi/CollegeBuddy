@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/startTimeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start Timing"
+            android:gravity="center"
+            android:background="@color/md_blue_600"
+            android:layout_margin="4dp"
+            android:textColor="@color/md_white_1000"/>
+        <Button
+            android:id="@+id/endTimeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="End Timing"
+            android:gravity="center"
+            android:background="@color/md_blue_600"
+            android:layout_margin="4dp"
+            android:textColor="@color/md_white_1000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/subjectChoiceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp">
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+
+    <EditText
+        android:id="@+id/venueEditText"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="venue"
+        android:gravity="center"
+        android:layout_margin="4dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

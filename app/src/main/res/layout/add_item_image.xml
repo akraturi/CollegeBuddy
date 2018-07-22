@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/marks_row_card"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginRight="1dp"
+    android:layout_gravity="center">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/addscheduleImageview"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_add_black_24dp"
+        android:background="@color/md_blue_600"
+        app:civ_border_color="@color/md_white_1000"
+        android:layout_margin="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center" />
+</androidx.cardview.widget.CardView>

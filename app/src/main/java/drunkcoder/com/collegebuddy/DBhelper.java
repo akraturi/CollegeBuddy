@@ -4,6 +4,7 @@ import android.content.Context;
 import com.activeandroid.Model;
 import com.activeandroid.query.Select;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class DBhelper {
     public void saveObject(Model object)
     {
         object.save();
+
     }
 
     public List<?> getList(Class model)
@@ -37,6 +39,13 @@ public class DBhelper {
         }
      return names;
     }
+
+
+    private List<DayOFWeek> getDayOfWeekTable()
+    {
+        return new Select().from(DayOFWeek.class).execute();
+    }
+
 
 
 }

@@ -3,6 +3,7 @@ package drunkcoder.com.collegebuddy;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.google.gson.JsonObject;
 
 @Table(name="Schedule")
 
@@ -58,5 +59,21 @@ public class Schedule extends Model {
 
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    public JsonObject getJsonObject()
+    {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("startTime",startTime);
+        jsonObject.addProperty("endTime",endTime);
+        jsonObject.addProperty("venue",venue);
+//        jsonObject.addProperty("subject",subject.toString());
+
+        return jsonObject;
+    }
+
+    @Override
+    public String toString() {
+        return getJsonObject().toString();
     }
 }

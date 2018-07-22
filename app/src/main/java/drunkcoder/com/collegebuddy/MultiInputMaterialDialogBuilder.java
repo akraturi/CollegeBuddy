@@ -72,50 +72,6 @@ public class MultiInputMaterialDialogBuilder extends MaterialDialog.Builder {
         });
     }
 
-    public MultiInputMaterialDialogBuilder inputs(@NonNull final InputsCallback callback) {
-        this.callback(new MaterialDialog.ButtonCallback() {
-            @Override
-            public void onPositive(MaterialDialog dialog) {
-                super.onPositive(dialog);
-
-                List<CharSequence> inputs = new ArrayList<>();
-                for (EditText editText : mEditTexts) {
-                    inputs.add(editText.getText());
-                }
-
-                boolean allInputsValidated = true;
-                for (int i = 0; i < inputs.size(); i++) {
-                    CharSequence input = inputs.get(i);
-                    CharSequence errorMessage = mValidators.get(i).validate(input);
-                    boolean validated = errorMessage == null;
-                    if (!validated) {
-                        mEditTexts.get(i).setError(errorMessage);
-                        allInputsValidated = false;
-                    }
-                }
-
-                callback.onInputs(dialog, inputs, allInputsValidated);
-
-                if (allInputsValidated) {
-                    dialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onNegative(MaterialDialog dialog) {
-                super.onNegative(dialog);
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onNeutral(MaterialDialog dialog) {
-                super.onNeutral(dialog);
-                dialog.dismiss();
-            }
-        });
-        return this;
-    }
-
     public interface InputsCallback {
         void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated);
     }

@@ -51,4 +51,5 @@ public class Subject extends Model {
     public String toString() {
        return name;
     }
+
 }

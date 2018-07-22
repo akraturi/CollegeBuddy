@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              startActivity(new Intent(DetailsActivity.this,TimetableActivity.class));
+              startActivity(new Intent(DetailsActivity.this,NewTimeTableActivity.class));
             }
         });
 

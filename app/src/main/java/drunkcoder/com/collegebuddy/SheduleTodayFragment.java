@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SheduleTodayFragment extends Fragment {
 
-    private RecyclerViewHelper mRecyclerViewHelper;
     private Activity mHostingActivity;
     private List<Schedule> todaysSchedule;
 
@@ -60,55 +59,9 @@ public class SheduleTodayFragment extends Fragment {
         final View view = inflater.inflate(R.layout.schedule_today_fragment,container,false);
 
         RecyclerView recyclerView = view.findViewById(R.id.schdule_fragment_recyclerview);
-        setupRecyclerView(recyclerView);
         return view;
     }
 
-    public void setupRecyclerView(RecyclerView recyclerView) {
-        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(mHostingActivity, recyclerView, false, new LinearLayoutManager(mHostingActivity));
-
-
-        recyclerViewHelper
-                .configAdapter(new RecyclerViewHelper.AdapterActivityListener() {
-
-                    @Override
-                    public DataHolder onDataHolderCreated(LayoutInflater inflater, ViewGroup parent) {
-                        View rowView = inflater.inflate(R.layout.shedule_row_item, parent, false);
-                        return new DataHolder(rowView) {
-
-                            TextView timeTextview;
-                            TextView subjectTextView;
-                            TextView venueTextView;
-
-                            @Override
-                            public void onInit(View view) {
-                                // initialise your views here
-                                timeTextview = view.findViewById(R.id.timeTextView);
-                                subjectTextView = view.findViewById(R.id.subjectTextView);
-                                venueTextView = view.findViewById(R.id.venueTextview);
-                            }
-
-                            @Override
-                            public void bind(int position) {
-
-
-                                timeTextview.setText(todaysSchedule.get(position).getStartTime() + "-" + todaysSchedule.get(position).getEndTime());
-                                subjectTextView.setText(todaysSchedule.get(position).getSubject().getName());
-                                venueTextView.setText("(" + todaysSchedule.get(position).getVenue() + ")");
-                            }
-                        };
-                    }
-
-                    @Override
-                    public RecyclerViewHelper.NestedRecyclerViewHandler onBindDataHolder(int position) {
-
-                         return null;
-                    }
-
-                })
-                .withData(todaysSchedule)
-                .set();
-    }
 
 
 }

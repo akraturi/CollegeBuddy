@@ -24,11 +24,16 @@
             android:label="@string/title_activity_details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TimetableActivity"></activity>
+        <activity android:name=".TimetableActivity" />
 
-        <meta-data android:name="AA_DB_NAME" android:value="MyDatabase.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="5" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="MyDatabase.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="5" />
 
+        <activity android:name=".NewTimeTableActivity"></activity>
     </application>
 
 </manifest>

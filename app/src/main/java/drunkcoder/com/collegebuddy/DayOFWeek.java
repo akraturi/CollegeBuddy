@@ -5,22 +5,24 @@ import android.graphics.ColorSpace;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name="DayOfWeek")
 public class DayOFWeek extends Model {
     @Column(name="name")
-    int name;
+    String name;
     @Column(name="scheduleOfWeek")
-    List<Schedule> scheduleOfWeek;
+    List<Schedule> scheduleOfDay;
     @Column(name="totalClasses")
     int totalClasses;
 
-    public DayOFWeek(int name, List<Schedule> scheduleOfWeek, int totalClasses) {
+    public DayOFWeek(String name, List<Schedule> scheduleOfWeek, int totalClasses) {
         super();
         this.name = name;
-        this.scheduleOfWeek = scheduleOfWeek;
+        this.scheduleOfDay = scheduleOfWeek;
         this.totalClasses = totalClasses;
     }
 
@@ -29,20 +31,20 @@ public class DayOFWeek extends Model {
         super();
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public List<Schedule> getScheduleOfWeek() {
-        return scheduleOfWeek;
+    public List<Schedule> getScheduleOfDay() {
+        return scheduleOfDay;
     }
 
-    public void setScheduleOfWeek(List<Schedule> scheduleOfWeek) {
-        this.scheduleOfWeek = scheduleOfWeek;
+    public void setScheduleOfDay(List<Schedule> scheduleOfDay) {
+        this.scheduleOfDay = scheduleOfDay;
     }
 
     public int getTotalClasses() {
@@ -52,4 +54,11 @@ public class DayOFWeek extends Model {
     public void setTotalClasses(int totalClasses) {
         this.totalClasses = totalClasses;
     }
+
+    public void addToSchedule(Schedule schedule)
+    {
+        scheduleOfDay.add(schedule);
+    }
+
+
 }

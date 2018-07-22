@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     addFragment(OverviewFragment.newInstance());
                     return true;
                 case R.id.navigation_timetable:
-                    startActivity(new Intent(MainActivity.this,TimetableActivity.class));
-                    return true;
+                    startActivity(new Intent(MainActivity.this,NewTimeTableActivity.class));                    return true;
                 case R.id.navigation_attendance:
                     return true;
                 case R.id.navigation_marks:
@@ -94,9 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mDBhelper = new DBhelper(this);
 
-        mSubjects= mDBhelper.getSubjectNames();
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSubjects= mDBhelper.getSubjectNames();
+    }
 
     private void addFragment(Fragment fragment)
     {
@@ -217,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void subjectDialog()
     {
-        new MaterialDialogHelper(this).createListDialog(mSubjects.toArray(new String[mSubjects.size()]) ,"Select Subject")
+        new MaterialDialogHelper(this).createListDialog(mDBhelper.getSubjectNames().toArray(new String[mSubjects.size()]) ,"Select Subject")
                 .setOnListItemClickListener(new MaterialDialogHelper.OnListItemClickListener() {
                     @Override
                     public void onClick(MaterialDialog dialog, View view, int which, CharSequence text) {
