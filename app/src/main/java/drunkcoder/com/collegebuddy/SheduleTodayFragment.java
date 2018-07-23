@@ -44,7 +44,6 @@ public class SheduleTodayFragment extends Fragment {
             schedule.setEndTime("0"+random.nextInt(9)+"PM");
             Subject subject = new Subject();
             subject.setName(subjects[random.nextInt(subjects.length)]);
-            subject.setFaculty("");
             schedule.setSubject(subject);
             schedule.setVenue("LH-"+random.nextInt(i+10));
             todaysSchedule.add(schedule);

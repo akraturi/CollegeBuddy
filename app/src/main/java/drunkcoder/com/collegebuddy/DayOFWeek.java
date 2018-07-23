@@ -1,6 +1,7 @@
 package drunkcoder.com.collegebuddy;
 
 import android.graphics.ColorSpace;
+import android.util.Log;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -60,5 +61,12 @@ public class DayOFWeek extends Model {
         scheduleOfDay.add(schedule);
     }
 
+    public static List<Schedule> getScheduleForDay(int day)
+    {
+        List<Schedule> schedules = new ArrayList<>();
+        schedules = new Select().from(Schedule.class).where("day=?",day).execute();
+        return schedules;
+
+    }
 
 }

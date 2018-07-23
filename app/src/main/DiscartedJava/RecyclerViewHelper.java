@@ -21,13 +21,18 @@ public class RecyclerViewHelper {
     private RecyclerView mRecyclerView;
     private Context mContext;
     private DataAdapter mDataAdapter;
-    private boolean mHasNestedHorizontalRecyclerView;
+    private boolean mHasNestedHorizontalRecyclerView; // variable to indicated that if the adapter has nested recyclerview
+
+    // Variables are used to differentiate the static viewholders and dynamic viewholders
+    public static final int STATIC=0;
+    public static final int  DYNAMIC=1;
 
 
     public RecyclerViewHelper(Context context, RecyclerView recyclerView, boolean hasNestedHorizontalRecyclerView, @Nullable RecyclerView.LayoutManager layoutManager)
     {
         mContext=context;
         mRecyclerView=recyclerView;
+        mRecyclerView.setNestedScrollingEnabled(false);
         mHasNestedHorizontalRecyclerView=hasNestedHorizontalRecyclerView;
         mRecyclerView.setLayoutManager(layoutManager);
 
@@ -38,26 +43,26 @@ public class RecyclerViewHelper {
      public class DataAdapter extends RecyclerView.Adapter<DataHolder>  {
 
         private List<?> mDataSet;
-        private AdapterActivityListener mListener;
-        private NestedRecyclerViewHandler mNestedRecyclerViewHandler;
+        private AdapterActivityListener mListener; // provides the interface to implement the native Adapter methods to caller
+        private NestedRecyclerViewHandler mNestedRecyclerViewHandler; // provides the interface to handle the nested recyclerview
+
 
         @NonNull
         @Override
         public DataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
             LayoutInflater inflater = LayoutInflater.from(mContext);
-            return  mListener.onDataHolderCreated(inflater,parent);
 
+            return  mListener.onDataHolderCreated(inflater,parent,viewType);
 
         }
 
         @Override
         public void onBindViewHolder(@NonNull DataHolder holder, int position) {
 
+            mNestedRecyclerViewHandler=mListener.onBindDataHolder(holder,position);
 
-            mNestedRecyclerViewHandler=mListener.onBindDataHolder(position);
-            holder.bind(position);
-
+            // configure the nested recyclerview if it has any
             if(mHasNestedHorizontalRecyclerView)
             {
               RecyclerView recyclerView=mNestedRecyclerViewHandler.onSetup(holder.itemView);
@@ -68,11 +73,12 @@ public class RecyclerViewHelper {
 
             }
 
+
         }
 
         @Override
         public int getItemCount() {
-            return mDataSet.size();
+            return mListener.getItemCount();
         }
 
         public DataAdapter withData(List<?> dataSet)
@@ -83,9 +89,10 @@ public class RecyclerViewHelper {
 
 
 
-        public void set()
+        public DataAdapter set()
         {
             mRecyclerView.setAdapter(this);
+            return this;
         }
 
         public void setAdapterActivityListener(AdapterActivityListener adapterActivityListener)
@@ -93,7 +100,20 @@ public class RecyclerViewHelper {
             mListener = adapterActivityListener;
         }
 
-    }
+        // setup the difference between the static and dynamic viewholder
+         @Override
+         public int getItemViewType(int position) {
+
+                if(position==mDataSet.size()-1)
+                {
+                    return STATIC;
+                }
+                else
+                {
+                    return DYNAMIC;
+                }
+         }
+     }
 
     public DataAdapter configAdapter(AdapterActivityListener parentListener)
     {
@@ -108,26 +128,26 @@ public class RecyclerViewHelper {
 
     }
 
-
+    // interface handlers the nested recyclerview
     public interface NestedRecyclerViewHandler {
 
         RecyclerView onSetup(View view);
         void onChildConfig(RecyclerViewHelper recyclerViewHelper);
     }
 
+    // interface provides the mechanism to implement native adapter methods
     public interface AdapterActivityListener {
 
 
-        DataHolder onDataHolderCreated(LayoutInflater inflater, ViewGroup parent);
+        DataHolder onDataHolderCreated(LayoutInflater inflater, ViewGroup parent,int viewType);
 
-        @Nullable NestedRecyclerViewHandler onBindDataHolder(int position);
+        @Nullable NestedRecyclerViewHandler onBindDataHolder(DataHolder holder,int position);
+
+        int getItemCount();
 
        // RecyclerViewHelper.NestedRecyclerViewHandler onHandleNestedRecyclerView();
 
 
     }
-
-
-
 
 }

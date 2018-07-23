@@ -16,18 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    private List<String> mSubjects;
+    private List<Subject> mSubjects;
 
     private DBhelper mDBhelper;
 
@@ -91,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mOnNavigationItemSelectedListener.onNavigationItemSelected(navigation.getMenu().getItem(0).setChecked(true));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        mDBhelper = new DBhelper(this);
 
 
     }
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        mSubjects= mDBhelper.getSubjectNames();
+        mSubjects= Subject.getSubjects();
     }
 
     private void addFragment(Fragment fragment)
@@ -116,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.fabAddSub:
-                addDialogs();
+                addSubject();
                 mFloatingActionMenu.close(true);
                 break;
             case R.id.fab_attendance:
@@ -142,44 +137,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void attendanceDialogs()
     {
 
-        new MaterialDialogHelper(this).createListDialog(new String[]{"DBMS","Computer Networks","Real Time System","Image Processing","Computer graphics","Netork security"},"Select Subject")
-                .setOnListItemClickListener(new MaterialDialogHelper.OnListItemClickListener() {
-                    @Override
-                    public void onClick(MaterialDialog dialog, View view, int which, CharSequence text) {
-                        Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public boolean onLongClick(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        return false;
-                    }
-                });
 
     }
-    public void addDialogs()
+    public void editSubject(final int position)
     {
-        new MaterialDialogHelper(this).createInputDialog(null,new ArrayList<CharSequence>(){{add("Subject");add("Faculty");}},"Add")
-        .setOnInputListener(new MaterialDialogHelper.OnInputListener() {
-            @Override
-            public void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated) {
-                 Subject subject = new Subject();
-                 subject.setName(inputs.get(0).toString());
-                 subject.setFaculty(inputs.get(1).toString());
-                 mDBhelper.saveObject(subject);
-            }
-        })
-        .setmOnResponseListener(new MaterialDialogHelper.OnResponseListener() {
-            @Override
-            public void onPostiveResponse(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                Toast.makeText(MainActivity.this, "saved!", Toast.LENGTH_SHORT).show();
-            }
+        String name = mSubjects.get(position).getName();
+        new MaterialDialog.Builder(this)
+                .title("Edit")
+                .positiveText("Save")
+                .negativeText("Cancel")
+                .input(null,name, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                         reflectSubEditinDB(position,input.toString());
+                        }
+                }).show();
 
-            @Override
-            public void onNegativeResponse(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-            }
-        });
+    }
 
+    public void addSubject()
+    {
+        new MaterialDialog.Builder(this)
+                .title("Add Subject")
+                .positiveText("Save")
+                .negativeText("Cancel")
+                .input("Subject",null, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        addSubtoDB(input.toString());
+                    }
+                }).show();
     }
 
     @Override
@@ -203,42 +191,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    public void editOptionsDialogs()
+    public void editOptionsDialogs(final int index)
     {
-        new MaterialDialogHelper(this).createListDialog(new String[]{"Edit","Delete"},null)
-                .setOnListItemClickListener(new MaterialDialogHelper.OnListItemClickListener() {
-                    @Override
-                    public void onClick(MaterialDialog dialog, View view, int which, CharSequence text) {
-                       addDialogs();
-                    }
-
-                    @Override
-                    public boolean onLongClick(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        return true;
-                    }
-                });
+         new MaterialDialog.Builder(this)
+                 .items(new String[]{"Edit","Delete"})
+                 .itemsCallback(new MaterialDialog.ListCallback() {
+                     @Override
+                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                         switch (position)
+                         {
+                             case 0:
+                                 editSubject(index);
+                                 break;
+                             case 1:
+                                 deleteSubFromDB(mSubjects.get(index));
+                                 break;
+                         }
+                     }
+                 }).show();
     }
 
     public void subjectDialog()
     {
-        new MaterialDialogHelper(this).createListDialog(mDBhelper.getSubjectNames().toArray(new String[mSubjects.size()]) ,"Select Subject")
-                .setOnListItemClickListener(new MaterialDialogHelper.OnListItemClickListener() {
+        new MaterialDialog.Builder(this)
+                .items(mSubjects)
+                .title("Subjects")
+                .itemsLongCallback(new MaterialDialog.ListLongCallback() {
                     @Override
-                    public void onClick(MaterialDialog dialog, View view, int which, CharSequence text) {
-                        editOptionsDialogs();
+                    public boolean onLongSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        editOptionsDialogs(position);
+                        return true;
                     }
-
-                    @Override
-                    public boolean onLongClick(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        return false;
-                    }
-                });
+                })
+                .show();
     }
 
     public void reminderDialog()
     {
-        new MaterialDialogHelper(this).createListDialog(new String[]{"Exam", "Assignment", "others"},"Category");
 
+
+    }
+
+    public void addSubtoDB(String subjectName)
+    {
+        Subject subject = new Subject(subjectName);
+        mSubjects.add(subject);
+        subject.save();
+        Toast.makeText(MainActivity.this, subjectName+": saved to DB", Toast.LENGTH_SHORT).show();
+    }
+
+    public void deleteSubFromDB(Subject subject)
+    {
+        mSubjects.remove(subject);
+        subject.delete();
+        Toast.makeText(this, "Deleted!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void reflectSubEditinDB(int position,String subjectName)
+    {
+        Subject subject = mSubjects.get(position);
+        subject.setName(subjectName);
+        subject.save();
+        Toast.makeText(MainActivity.this, subjectName+": saved to DB", Toast.LENGTH_SHORT).show();
     }
 
 }

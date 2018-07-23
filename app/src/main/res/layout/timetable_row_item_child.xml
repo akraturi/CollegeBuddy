@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="wrap_content"
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:id="@+id/marks_row_card"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginRight="1dp">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
         android:orientation="vertical"
+        android:background="@color/colorAccent"
         android:layout_gravity="center"
         android:gravity="center">
         <RelativeLayout
@@ -24,8 +24,8 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:paddingLeft="12dp"
-                android:textColor="@color/md_white_1000"
                 android:gravity="center"
+                android:textColor="@color/md_white_1000"
                 android:drawableLeft="@drawable/ic_access_time_white_24dp" />
             <ImageView
                 android:id="@+id/overflowImageView"
@@ -39,9 +39,9 @@
             android:layout_height="1dp"
             android:layout_width="match_parent"
             android:layout_marginTop="4dp"
-            android:background="@color/md_white_1000" />
+            android:background="@color/md_white_1000"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
@@ -52,16 +52,18 @@
                 android:background="@drawable/circle"
                 android:textSize="@dimen/material_text_title"
                 android:textStyle="bold"
-                android:textColor="@color/md_white_1000"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/md_white_1000"/>
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/md_white_1000" />
+                android:background="@color/md_white_1000"
+                />
             <TextView
                 android:id="@+id/venueTextview"
                 android:layout_width="100dp"
@@ -74,7 +76,8 @@
                 android:gravity="center"
                 android:padding="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                android:layout_weight="1" />
         </LinearLayout>
         <!--</RelativeLayout>-->
 

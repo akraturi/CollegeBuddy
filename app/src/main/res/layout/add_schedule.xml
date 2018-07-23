@@ -29,18 +29,12 @@
             android:textColor="@color/md_white_1000"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="8dp">
-
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/subjectChoiceSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:layout_weight="1">
 
     </androidx.appcompat.widget.AppCompatSpinner>
 
@@ -50,10 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="venue"
-        android:gravity="center"
-        android:layout_margin="4dp"/>
-
-    </LinearLayout>
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>

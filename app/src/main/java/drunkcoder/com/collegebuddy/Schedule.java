@@ -12,10 +12,12 @@ public class Schedule extends Model {
         String startTime;
         @Column(name="endTime")
         String endTime;
-        @Column(name="subject")
+        @Column(name="subject",onDelete = Column.ForeignKeyAction.CASCADE)
         Subject subject;
         @Column(name="venue")
         String venue;
+        @Column(name="day")
+        int day;
 
     public Schedule(String startTime, String endTime, Subject subject, String venue) {
         super();
@@ -61,13 +63,22 @@ public class Schedule extends Model {
         this.venue = venue;
     }
 
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
     public JsonObject getJsonObject()
     {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("startTime",startTime);
         jsonObject.addProperty("endTime",endTime);
         jsonObject.addProperty("venue",venue);
-//        jsonObject.addProperty("subject",subject.toString());
+        jsonObject.addProperty("day",day);
 
         return jsonObject;
     }

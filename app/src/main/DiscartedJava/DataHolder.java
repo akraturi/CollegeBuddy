@@ -4,7 +4,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class DataHolder extends RecyclerView.ViewHolder {
+public abstract class DataHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
 
     public DataHolder(View view)

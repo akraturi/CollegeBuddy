@@ -31,13 +31,13 @@ public class NewTimeTableActivity extends AppCompatActivity {
         weekDays = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             String dayName= dayNames[i];
-            List<Schedule> daySchedule;
+            List<Schedule> daySchedule=DayOFWeek.getScheduleForDay(i);
             int totalClasses = 4;
 
             DayOFWeek day = new DayOFWeek();
             day.setName(dayName);
             day.setTotalClasses(totalClasses);
-            day.setScheduleOfDay(new ArrayList<Schedule>());
+            day.setScheduleOfDay(daySchedule);
             weekDays.add(day);
         }
     }

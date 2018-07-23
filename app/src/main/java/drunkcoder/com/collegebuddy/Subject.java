@@ -3,22 +3,21 @@ package drunkcoder.com.collegebuddy;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
+import java.util.List;
 import java.util.UUID;
 
 @Table(name="Subject")
 public class Subject extends Model {
     @Column(name="name")
     String name;
-    @Column(name="faculty")
-    String faculty;
     @Column(name="uid")
     String id;
 
-    public Subject(String name, String faculty) {
+    public Subject(String name) {
         super();
         this.name = name;
-        this.faculty = faculty;
         id=UUID.randomUUID().toString();
     }
 
@@ -35,14 +34,6 @@ public class Subject extends Model {
         this.name = name;
     }
 
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
     public String getUId() {
         return id;
     }
@@ -50,6 +41,11 @@ public class Subject extends Model {
     @Override
     public String toString() {
        return name;
+    }
+
+    public static List<Subject> getSubjects()
+    {
+        return new Select().from(Subject.class).execute();
     }
 
 }

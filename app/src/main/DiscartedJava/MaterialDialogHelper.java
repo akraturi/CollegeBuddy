@@ -1,9 +1,8 @@
 package drunkcoder.com.collegebuddy;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -51,65 +50,6 @@ public class MaterialDialogHelper {
                 return this;
     }
 
-
-    public MaterialDialogHelper createInputDialog(List<CharSequence> prefills, List<CharSequence> hints, String title)
-    {
-        int count=0;
-
-        MultiInputMaterialDialogBuilder mInputBuilder=new MultiInputMaterialDialogBuilder(mContext);
-
-        if(prefills!=null)
-        {
-            count = prefills.size();
-        }
-        else if(hints!=null)
-        {
-            count = hints.size();
-        }
-
-
-        for(int i=0;i<count;i++)
-        {
-
-            if(prefills!=null)
-            {
-                mInputBuilder.addInput(prefills.get(i),"");
-            }
-            else
-            {
-                mInputBuilder.addInput("",hints.get(i));
-            }
-
-        }
-
-//
-//                mInputBuilder.inputs(new MultiInputMaterialDialogBuilder.InputsCallback() {
-//                    @Override
-//                    public void onInputs(MaterialDialog dialog, List<CharSequence> inputs, boolean allInputsValidated) {
-//                       if(mInputListener!=null)
-//                        mInputListener.onInputs(dialog,inputs,allInputsValidated);
-//                    }
-//                })
-//                .title(title)
-//                .positiveText("Save")
-//                .negativeText("Cancel")
-//                .onPositive(new MaterialDialog.SingleButtonCallback() {
-//                    @Override
-//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                        if(mOnResponseListener!=null)
-//                        mOnResponseListener.onPostiveResponse(dialog,which);
-//                    }
-//                })
-//                .onNegative(new MaterialDialog.SingleButtonCallback() {
-//                    @Override
-//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                        if(mOnResponseListener!=null)
-//                        mOnResponseListener.onNegativeResponse(dialog,which);
-//                    }
-//                })
-//                .build().show();
-              return this;
-        }
 
         public interface OnListItemClickListener
         {
