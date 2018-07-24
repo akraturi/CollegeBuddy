@@ -54,10 +54,10 @@ public class ListTypeSerializer extends TypeSerializer {
             if(!list.isEmpty()){
                 Object type = list.get(0);
 
-                if(type instanceof Schedule){
-                    List<Schedule> finalList = (List<Schedule>) list;
+                if(type instanceof Marks){
+                    List<Marks> finalList = (List<Marks>) list;
                     sBuilder.append("{\"")
-                            .append("ScheduleList")
+                            .append("MarksList")
                             .append("\":")
                             .append(finalList.toString())
                             .append("}");
@@ -78,17 +78,20 @@ public class ListTypeSerializer extends TypeSerializer {
         String s = (String) data;
 
         // Get our wheelList using our global gson instance
-        if(s.contains("ScheduleList")){
-            GetScheduleList gsl = MyApplication
+        if(s.contains("MarksList")){
+            GetMarksList gsl = MyApplication
                     .getApp()
                     .getGson()
-                    .fromJson(s, GetScheduleList.class);
+                    .fromJson(s, GetMarksList.class);
 
-            return gsl.scheduleList;
+            return gsl.marksList;
         }
         else {
             return null;
         }
     }
 
+    public static class GetMarksList {
+       public List<Marks> marksList;
+    }
 }

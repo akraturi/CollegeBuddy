@@ -5,6 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +13,13 @@ import java.util.UUID;
 public class Subject extends Model {
     @Column(name="name")
     String name;
-    @Column(name="uid")
-    String id;
+    @Column(name="attendance")
+    Attendance attendance;
+
 
     public Subject(String name) {
         super();
         this.name = name;
-        id=UUID.randomUUID().toString();
     }
 
     public Subject()
@@ -34,9 +35,6 @@ public class Subject extends Model {
         this.name = name;
     }
 
-    public String getUId() {
-        return id;
-    }
 
     @Override
     public String toString() {
@@ -46,6 +44,14 @@ public class Subject extends Model {
     public static List<Subject> getSubjects()
     {
         return new Select().from(Subject.class).execute();
+    }
+
+    public Attendance getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Attendance attendance) {
+        this.attendance = attendance;
     }
 
 }

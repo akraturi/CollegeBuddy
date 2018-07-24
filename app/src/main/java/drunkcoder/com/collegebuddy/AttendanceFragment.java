@@ -5,18 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AttendanceFragment extends Fragment {
 
     private Activity mHostingActivity;
-    private List<?> attendanceList;
+    private List<Subject> subjectList;
+    private RecyclerView mRecyclerView;
 
     public static AttendanceFragment newInstance() {
 
@@ -39,11 +42,28 @@ public class AttendanceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_attendance,container,false);
 
-        RecyclerView recyclerView= view.findViewById(R.id.marks_fragment_recyclerview);
-
-
+        mRecyclerView = view.findViewById(R.id.attendance_fragment_recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mHostingActivity));
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        subjectList = Subject.getSubjects();
+
+        setUpAdapter();
+
+    }
+
+    private void setUpAdapter()
+    {
+        AttendanceAdapter adapter = new AttendanceAdapter(mHostingActivity,subjectList);
+        mRecyclerView.setAdapter(adapter);
+    }
+
+
 
 
 }

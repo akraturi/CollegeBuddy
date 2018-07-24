@@ -6,14 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MarksFragment extends Fragment {
 
     private Activity mHostingActivity;
+    private List<Subject>  mSubjectList;
+    private RecyclerView mRecyclerView;
 
 
     public static MarksFragment newInstance() {
@@ -37,14 +42,22 @@ public class MarksFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_marks,container,false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.marks_fragment_recyclerview);
-
+        mRecyclerView = view.findViewById(R.id.marks_fragment_recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mHostingActivity));
 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        mSubjectList = Subject.getSubjects();
 
+        MarksParentAdapter adapter = new MarksParentAdapter(mHostingActivity,mSubjectList);
 
+        mRecyclerView.setAdapter(adapter);
+
+    }
 
 }

@@ -20,6 +20,7 @@
             android:layout_weight="1">
 
             <TextView
+                android:id="@+id/subjectTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Computer Networks"
@@ -32,11 +33,13 @@
                android:layout_height="wrap_content"
                android:layout_margin="8dp">
                <TextView
+                   android:id="@+id/attendedTextView"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Attended:16"
                    android:layout_marginLeft="8dp"/>
                <TextView
+                   android:id="@+id/totalTextView"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Total:24"
@@ -46,7 +49,7 @@
 
         </LinearLayout>
         <TextView
-            android:id="@+id/attendance_per_textview"
+            android:id="@+id/attendancePercentTextView"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/circle"
@@ -67,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/remarkTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You are on the track!"
@@ -75,7 +79,7 @@
             android:textSize="@dimen/material_text_subhead"/>
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/attendance_check"
+                android:id="@+id/remarkImageView"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/correct"

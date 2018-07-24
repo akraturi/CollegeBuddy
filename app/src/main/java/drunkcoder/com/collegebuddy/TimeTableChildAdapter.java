@@ -171,7 +171,7 @@ public class TimeTableChildAdapter extends RecyclerView.Adapter<TimeTableChildAd
         setUpView(view);
 
         new MaterialDialog.Builder(mContext)
-                .title("AddmSchedule")
+                .title("Add Schedule")
                 .customView(view,false)
                 .positiveText("Add")
                 .negativeText("Cancel")

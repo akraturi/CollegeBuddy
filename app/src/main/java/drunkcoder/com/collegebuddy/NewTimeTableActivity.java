@@ -32,7 +32,7 @@ public class NewTimeTableActivity extends AppCompatActivity {
         for (int i = 0; i < 7; i++) {
             String dayName= dayNames[i];
             List<Schedule> daySchedule=DayOFWeek.getScheduleForDay(i);
-            int totalClasses = 4;
+            int totalClasses = daySchedule.size();
 
             DayOFWeek day = new DayOFWeek();
             day.setName(dayName);

@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private List<Subject> mSubjects;
 
-    private DBhelper mDBhelper;
-
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -136,7 +133,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void attendanceDialogs()
     {
-
+        new MaterialDialog.Builder(this)
+                .title("Select Subject")
+                .items(mSubjects)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        Subject subject = mSubjects.get(position);
+                        Attendance attendance = subject.getAttendance();
+                        attendance.attendedClasses++;
+                        attendance.totalClasses++;
+                        attendance.save();
+                        Toast.makeText(MainActivity.this, "Attendance marked! for "+mSubjects.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
 
     }
     public void editSubject(final int position)
@@ -235,6 +246,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void addSubtoDB(String subjectName)
     {
         Subject subject = new Subject(subjectName);
+        Attendance attendance = new Attendance();
+        attendance.save();
+        subject.setAttendance(attendance);
         mSubjects.add(subject);
         subject.save();
         Toast.makeText(MainActivity.this, subjectName+": saved to DB", Toast.LENGTH_SHORT).show();
